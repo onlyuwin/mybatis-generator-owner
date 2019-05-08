@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--数据库驱动位置-->
+    <classPathEntry location="E:\maven\mysql\mysql-connector-java\5.1.46\mysql-connector-java-5.1.46.jar"/>
+    <context id="XHTables" targetRuntime="MyBatis3">
+        <!--xml是否合并 不配置或者false则覆盖-->
+        <property name="xml-mergeable" value="false"></property>
+        <!--编码格式-->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <!-- <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />-->
+
+        <commentGenerator>
+            <property name="suppressDate" value="true"/>
+            <!-- 是否[去除]自动生成的注释  true：是 ：   false:否 -->
+            <property name="suppressAllComments" value="false"/>
+            <property name="addRemarkComments" value="true"/>
+        </commentGenerator>
+        <!--数据库连接-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/mbplus?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root"
+                        password="123456789">
+        </jdbcConnection>
+        <!--model 和 service等位置-->
+        <!--路径都采用绝对路径，先这样后期优化-->
+        <javaModelGenerator targetPackage="po"
+                            targetProject="H:\IdeaWorkspace\mybatis-generator\generator-mybatis-generator-1.3.7\core\mybatis-generator-core\src\test\java\test">
+            <property name="enableSubPackages" value="true"/>
+            <property name="rootClass" value="com.only.generator.baseentity.BaseEntity&lt;Long&gt;"/>
+        </javaModelGenerator>
+        <!--example位置-->
+        <javaExampleGenerator targetPackage="example"
+                              targetProject="H:\IdeaWorkspace\mybatis-generator\generator-mybatis-generator-1.3.7\core\mybatis-generator-core\src\test\java\test">
+            <property name="enableSubPackages" value="true"/>
+        </javaExampleGenerator>
+        <!--XML位置-->
+        <sqlMapGenerator targetPackage="mapping"
+                         targetProject="H:\IdeaWorkspace\mybatis-generator\generator-mybatis-generator-1.3.7\core\mybatis-generator-core\src\test\java\test">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!--dao Mapper位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="dao"
+                             targetProject="H:\IdeaWorkspace\mybatis-generator\generator-mybatis-generator-1.3.7\core\mybatis-generator-core\src\test\java\test"
+                             targetSupperClass="com.only.generator.basedao.BaseDao"
+                             targetKeyType="Long">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+        <!--要生成的表名-->
+        <table tableName="user" domainObjectName="User">
+            <!-- enableCountByExample="true"
+             enableUpdateByExample="true"
+             enableDeleteByExample="true"
+             enableSelectByExample="true"
+             enableRemoveByPrimaryKey="false"
+             selectByExampleQueryId="true">-->
+            <!--<generatedKey column="id" sqlStatement="MYSQL" identity="true" />-->
+        </table>
+    </context>
+</generatorConfiguration>
